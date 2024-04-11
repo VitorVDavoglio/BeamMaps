@@ -7,7 +7,7 @@ class DBConnect:
         self.conn = self.DatabaseConnect()
         self.cursor = self.conn.cursor()
 
-    def DatabaseConnect(self, driver='SQL Server', server='RENATO-PC\SQLEXPRESS', database='BeamMapsDB', username=None, password=None, trusted_connection='yes'):
+    def DatabaseConnect(self, driver='SQL Server', server='VÍTOR\SQLEXPRESS', database='BeamMapsDB', username=None, password=None, trusted_connection='yes'):
         connectionString = F"DRIVER={driver};SERVER={server};DATABASE={database};UTD={username};PWD={password};TRUSTED_CONNECTION{trusted_connection}"
         return pyodbc.connect(connectionString)
     

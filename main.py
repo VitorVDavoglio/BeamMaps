@@ -34,16 +34,21 @@ class App(customtkinter.CTk):
                        [1, 13],
                        [1, 5],
                        [2, 3],
+                       [2, 6], #Craiova -> Giurgiu
                        [2, 14],
                        [2, 13],
                        [3, 10],
+                       [4, 6],
                        [4, 7],
+                       [5, 11], #Fagaras -> Neamf
                        [5, 15],
                        [7, 17],
+                       [7, 18],
                        [8, 11],
                        [8, 18],
                        [9, 10],
                        [9, 16],
+                       [11, 12], #Neamf -> Oradea
                        [12, 15],
                        [12, 19],
                        [13, 14],
@@ -118,7 +123,7 @@ class App(customtkinter.CTk):
         self.btns.append(self.canvas.create_oval(164, 147, 184, 167))   #15 Sibiu
         self.btns.append(self.canvas.create_oval(41, 199, 61, 219))     #16 Timisoara
         self.btns.append(self.canvas.create_oval(430, 263, 450, 283))   #17 Urziceni
-        self.btns.append(self.canvas.create_oval(484, 161, 504, 181))   #18 Urziceni
+        self.btns.append(self.canvas.create_oval(484, 161, 504, 181))   #18 Vaslui
         self.btns.append(self.canvas.create_oval(56, 67, 76, 87))       #19 Zerind
 
         # add road lines
@@ -129,28 +134,34 @@ class App(customtkinter.CTk):
         self.roads.append(self.canvas.create_line(39 + 10, 110 + 10, 164 + 10, 147 + 10))
         self.roads.append(self.canvas.create_line(39 + 10, 110 + 10, 41 + 10, 199 + 10))
 
-        self.roads.append(self.canvas.create_line(369 + 10, 289 + 10, 341 + 10, 350 + 10))
+        self.roads.append(self.canvas.create_line(379, 289 + 10, 341 + 10, 350 + 10))
         self.roads.append(self.canvas.create_line(369 + 10, 289 + 10, 430 + 10, 263 + 10))
         self.roads.append(self.canvas.create_line(369 + 10, 289 + 10, 285 + 10, 247 + 10))
         self.roads.append(self.canvas.create_line(369 + 10, 289 + 10, 268 + 10, 157 + 10))
 
         self.roads.append(self.canvas.create_line(211 + 10, 332 + 10, 117 + 10, 321 + 10))
+        self.roads.append(self.canvas.create_line(211 + 10, 332 + 10, 341 + 10, 350 + 10)) #Craiova -> Giurgiu
         self.roads.append(self.canvas.create_line(211 + 10, 332 + 10, 191 + 10, 199 + 10))
         self.roads.append(self.canvas.create_line(211 + 10, 332 + 10, 285 + 10, 247 + 10))
 
         self.roads.append(self.canvas.create_line(117 + 10, 321 + 10, 120 + 10, 278 + 10))
 
-        self.roads.append(self.canvas.create_line(542 + 10, 326 + 10, 511 + 10, 266 + 10))
+        self.roads.append(self.canvas.create_line(542 + 10, 326 + 10, 341 + 10, 350 + 10)) #Eforie -> Giurgiu
+        self.roads.append(self.canvas.create_line(542 + 10, 326 + 10, 511 + 10, 266 + 10)) #Eforie -> Hirsova
 
+        self.roads.append(self.canvas.create_line(268 + 10, 157 + 10, 374 + 10, 61 + 10)) #Fagaras -> Neamf
         self.roads.append(self.canvas.create_line(268 + 10, 157 + 10, 164 + 10, 147 + 10))
 
-        self.roads.append(self.canvas.create_line(511 + 10, 266 + 10, 430 + 10, 263 + 10))
+        self.roads.append(self.canvas.create_line(511 + 10, 266 + 10, 430 + 10, 263 + 10)) #Hirsova -> Urziceni
+        self.roads.append(self.canvas.create_line(511 + 10, 266 + 10, 484 + 10, 161 + 10)) #Hirsova -> Vaslui
 
         self.roads.append(self.canvas.create_line(446 + 10, 94 + 10, 374 + 10, 61 + 10))
         self.roads.append(self.canvas.create_line(446 + 10, 94 + 10, 484 + 10, 161 + 10))
 
         self.roads.append(self.canvas.create_line(117 + 10, 233 + 10, 120 + 10, 278 + 10))
         self.roads.append(self.canvas.create_line(117 + 10, 233 + 10, 41 + 10, 199 + 10))
+        
+        self.roads.append(self.canvas.create_line(374 + 10, 61 + 10, 81 + 10, 24 + 10)) #Neamf -> Oradea
 
         self.roads.append(self.canvas.create_line(81 + 10, 24 + 10, 164 + 10, 147 + 10))
         self.roads.append(self.canvas.create_line(81 + 10, 24 + 10, 56 + 10, 67 + 10))
@@ -159,8 +170,15 @@ class App(customtkinter.CTk):
 
         self.roads.append(self.canvas.create_line(191 + 10, 199 + 10, 164 + 10, 147 + 10))
 
-        self.roads.append(self.canvas.create_line(430 + 10, 263 + 10, 484 + 10, 161 + 10))
+        self.roads.append(self.canvas.create_line(430 + 10, 263 + 10, 484 + 10, 161 + 10))  #Urziceni -> Vaslui
+        
+        #self.roads.append(self.canvas.create_line(341 + 10, 350 + 10, 542 + 10, 326 + 10))  #Eforie -> Giurgiu
+        #self.roads.append(self.canvas.create_line(341 + 10, 350 + 10, 211 + 10, 332 + 10))  #Craiova -> Giurgiu
+        
+        #self.roads.append(self.canvas.create_line(511 + 10, 266 + 10, 484 + 10, 161 + 10))  #Hirsova -> Vaslui
+        ## 484, 161
 
+        
         # add road distance
 
         roadDists = []
@@ -175,22 +193,28 @@ class App(customtkinter.CTk):
         roadDists.append(211)
 
         roadDists.append(120)
+        roadDists.append(140) #Craiova -> Giurgiu
         roadDists.append(145)
         roadDists.append(138)
 
         roadDists.append(75)
 
+        roadDists.append(232) #Eforie -> Giurgiu
         roadDists.append(86)
 
+        roadDists.append(190)
         roadDists.append(99)
 
         roadDists.append(98)
+        roadDists.append(135) #Hirsova -> Vaslui
 
         roadDists.append(87)
         roadDists.append(92)
         
         roadDists.append(70)
         roadDists.append(111)
+        
+        roadDists.append(80)
 
         roadDists.append(151)
         roadDists.append(71)
@@ -201,8 +225,12 @@ class App(customtkinter.CTk):
 
         roadDists.append(142)
 
-        roadDists.append(142)
-       
+        
+          
+        #roadDists.append(89) #Craiova -> Giurgiu
+        
+        #roadDists.append(135) #Hirsova -> Vaslui
+        
 
         # TxtX = self.canvas.bbox(self.roads[0])[2]
         # TxtY = self.canvas.bbox(self.roads[0])[3]
